@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Editar Cliente </title>
+    <style>
+        /* Retirar as setas dos imput numeros */
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <section class="warper">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="/">Mercadinho</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false"
+                    aria-label="Alterna navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/cadastro_produtos">Cadastrar Produtos</a>
+                        </li>
+                        <li>
+                            <a type="button" class="nav-link" href="/cadastro_cliente">Cadastrar Clientes</a>
+                        </li>
+                        <li>
+                            <a type="button" class="nav-link" href="/produtos">Produtos</a>
+                        </li>
+                        <li>
+                            <a type="button" class="nav-link" href="/clientes">Clientes</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </section>
+
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="mt-5">Editar Cliente
+                    <hr>
+                </h1>
+                <form action="/editar_cliente" method="POST">
+                    <div class="input-group">
+                        <div class=input-group-prepend>
+                            <span class="input-group-text">Nome do Cliente</span>
+                        </div>
+                        <label for="nome"></label>
+                        <input class="form-control" type="text" id="nome_cliente" name="nome_cliente"
+                            placeholder="Nome do Cliente" required value="<%= descricao_item.nome_cliente %>">
+                    </div>
+                    <div class="input-group mt-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">CPF do Cliente</span>
+                        </div>
+                        <label for="cpf"></label>
+                        <input class="form-control" type="text" id="cpf_cliente" name="cpf_cliente"
+                            placeholder="CPF do Cliente" required value="<%= descricao_item.cpf_cliente %>">
+                    </div>
+                    <input type="hidden" name="id_cliente" value="<%=descricao_item.id_cliente %>">
+                    <button class="btn btn-outline-success mb-5 mt-3" type="submit">Enviar</button>
+                    </tbody>
+                    </table>
+                </form>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+    <script src="js/validar.js"></script>
+</body>
+
+</html>

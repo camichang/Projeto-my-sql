@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Produtos</title>
+    <style>
+        /* Retirar as setas dos imput numeros */
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <section class="warper">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="/">Mercadinho</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false"
+                    aria-label="Alterna navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/cadastrar_produtos">Cadastrar Produtos</a>
+                        </li>
+                        <li>
+                            <a type="button" class="nav-link" href="/cadastro_cliente">Cadastrar Clientes</a>
+                        </li>
+                        <li>
+                            <a type="button" class="nav-link" href="/clientes">Clientes</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </section>
+
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="row mt-5">
+                    <div class="col-4">
+                        <h1>Lista de Produtos</h1>
+                    </div>
+                    <div class="col-3 mt-2">
+                        <a href="/" class="btn btn-outline-success">Cadastrar Produtos</a>
+                    </div>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nome do Produto</th>
+                            <th>Quantidade</th>
+                            <th>Preço</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <!-- criação do cabeçalho -->
+                    <tbody>
+                        <% lista_produtos.forEach(function(rows){ %>
+                            <tr>
+                                <td>
+                                    <%= rows.descricao_produto %>
+                                </td>
+                                <td>
+                                    <%= rows.quantidade_produto %>
+                                </td>
+                                <td>
+                                    <%= rows.preco_produto %>
+                                </td>
+                                <td>
+                                    <a class="btn btn-warning" href="/editar_produtos/<%=rows.id_produto %>">Editar</a>
+                                    <% if (rows.quantidade_produto >0) { %>
+                                    <a class="btn btn-success" href="/comprar_produto/<%=rows.id_produto %>">Comprar</a>
+                                    <% } %>
+                                    <a class="btn btn-danger " type="button" data-toggle="modal"
+                                        data-target="#modal<%=rows.id_produto%>">
+                                        Deletar</a>
+                                </td>
+                            </tr>
+
+                            <section class="modal fade" id="modal<%=rows.id_produto%>" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <section class="modal-dialog" role="document">
+                                    <section class="modal-content">
+                                        <section class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Tem certeza disso!</h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Fechar">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </section>
+                                        <section class="modal-body">
+                                            Ao clicar em <strong>DELETAR</strong>, você confirma que deseja apagar as
+                                            informações registradas.
+                                        </section>
+                                        <section class="modal-footer">
+                                            <button type="button" class="btn btn-warning"
+                                                data-dismiss="modal">Fechar</button>
+                                            <a href="/deletarProdutos/<%=rows.id_produto%>" type="button"
+                                                class="btn btn-danger">Deletar</a>
+                                        </section>
+                                    </section>
+                                </section>
+                            </section>
+                            <% }) %>
+
+                                <% if (lista_produtos==0){ %>
+                                    <tr>
+                                        <td colspan="12" class="alert alert-warning">Lista vazia! </td>
+                                    </tr>
+                                    <% } %>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+    <script src="js/validar.js"></script>
+
+  
+</body>
+
+
+
+</html>
